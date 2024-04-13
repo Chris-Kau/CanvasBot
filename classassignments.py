@@ -28,7 +28,7 @@ for i in course_list[0].get_assignments(bucket="future"):
     print(timeconverter(i.due_at))
 
 assignment_list = []
-for i in course_list:
+for i in range(len(course_list)):
     for j in course_list[i].get_assignments(bucket="future"):
         assignment_list.append([j, timeconverter(j.due_at)])
 

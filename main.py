@@ -12,6 +12,15 @@ intents = Intents.default()
 intents.message_content = True
 client = Client(intents=intents)
 #basic message response
+
+checked = 0
+todo_list = []
+#startup message
+@client.event
+async def on_ready() -> None:
+    print(f"{client.user} is now running")
+
+
 async def send_message(message, user_message):
     if not user_message:
         return
@@ -23,10 +32,6 @@ async def send_message(message, user_message):
     except Exception as e:
         print(e)
 
-#startup message
-@client.event
-async def on_ready() -> None:
-    print(f"{client.user} is now running")
 
 #handle incoming messages (so bot doesnt read its own message)
 @client.event
