@@ -7,6 +7,9 @@ def get_response(user_input):
         return "hello there!"
     if "todo" in lowered:
         return todo.todolist()
+    if "check" in user_input.lower()[:6]:
+        todo.NUMBER = user_input[6:]
+        return todo.checktodo(NUMBER)
 
     
     if "settoken" in user_input.lower()[:9]:
