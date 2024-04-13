@@ -18,7 +18,7 @@ async def send_message(message, user_message):
     if is_private := user_message[0] == '!':
         user_message = user_message[1:]
     try:
-        response: str = responses.get_token(user_message)
+        response: str = responses.get_response(user_message)
         await message.channel.send(response)
     except Exception as e:
         print(e)
