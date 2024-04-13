@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 from discord import Intents, Client, Message
 import responses
+import time
 
 
 load_dotenv()
@@ -47,6 +48,9 @@ async def on_message(message):
 
 def main():
     client.run(token=TOKEN)
+    while True:
+        time.sleep(5)
+        responses.get_response('reminder')
 
 if __name__ == '__main__':
     main()

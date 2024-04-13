@@ -23,5 +23,7 @@ def get_response(user_input):
             return todo.todolist(main.todo_list)
         if "check" in user_input.lower()[:6]:
             return todo.checktodo(user_input[6:])
+        if "reminder" in lowered:
+            return "Chris is poopy head."
     else:
         return ("Please set your canvas api token using !settoken (your token)")
