@@ -3,7 +3,7 @@
 import os
 from dotenv import load_dotenv
 from discord import Intents, Client, Message
-from responses import get_response
+import responses
 
 
 load_dotenv()
@@ -18,7 +18,7 @@ async def send_message(message, user_message):
     if is_private := user_message[0] == '!':
         user_message = user_message[1:]
     try:
-        response: str = get_response(user_message)
+        response: str = responses.get_token(user_message)
         await message.channel.send(response)
     except Exception as e:
         print(e)
@@ -33,7 +33,7 @@ async def on_ready() -> None:
 async def on_message(message):
     if message.author == client.user:
         return
-    
+
     username = str(message.author)
     user_message = str(message.content)
     channel = str(message.channel)
