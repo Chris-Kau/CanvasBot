@@ -1,7 +1,7 @@
 # pip install canvasapi
 from canvasapi import Canvas
 API_URL = "https://csulb.instructure.com/"
-API_KEY = "lol replace this" # api key / access token
+API_KEY = "21139~ubrPGw0IftGsagPaMSinpKvz3AEjonQvU38lYF6UXPXjBsUERLcEZePJ71WMSmin" # api key / access token
 
 canvas = Canvas(API_URL, API_KEY) # Initialize a new Canvas object
 user = canvas.get_current_user()

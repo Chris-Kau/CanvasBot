@@ -1,14 +1,20 @@
 from canvasapi import Canvas
-API_URL = "https://csulb.instructure.com"
-API_TOKEN = ''
-#creates canvas object
 
-
-def create_user_object(tkn):
-    print("USER TOKEN", tkn, type(tkn))
-    canvas = Canvas(API_URL, str(tkn))
-    try:
-        user = canvas.get_current_user()
-    except:
-        return "INVALID ACCESS TOKEN"
-    return user.name
+class userobject:
+    def __init__(self, token = None):
+        self._token = token
+        self._API_URL = "https://csulb.instructure.com"
+        print(self._token)
+    
+    def get_token(self) -> str:
+        return self._token
+    def get_url(self) -> str:
+        return self._API_URL
+    
+    def check_token(self) -> bool:
+        canvas = Canvas(self._API_URL, self._token)
+        try:
+            user = canvas.get_current_user()
+        except:
+            return False
+        return True
