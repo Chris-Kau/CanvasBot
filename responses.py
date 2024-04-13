@@ -7,13 +7,10 @@ def get_response(user_input):
         return "hello there!"
     if "todo" in lowered:
         return todo.todolist()
-<<<<<<< Updated upstream
     if "check" in user_input.lower()[:6]:
         return todo.checktodo(user_input[6:])
 
     
-=======
->>>>>>> Stashed changes
     if "settoken" in user_input.lower()[:9]:
         user = userobject(user_input[9:])
         if user.check_token() == False:
