@@ -12,13 +12,15 @@ courses = user.get_courses(enrollment_status='active')
 course_list = []
 for i in courses:
     try:
-        if hasattr(i, 'name'):
+        # print(i.enrollment_term_id)
+        if hasattr(i, 'name') and i.enrollment_term_id == 117: # 117 is spring 2024 term
             course_list.append(i)
     except Exception:
         continue
 
-# for i in course_list:
-#     print(i)
+
+for i in course_list:
+    print(i)
 
 
 # print(course_list[0])
@@ -30,8 +32,8 @@ assignment_list = []
 for i in range(len(course_list)):
     for j in course_list[i].get_assignments(bucket="future"):
         assignment_list.append([j, timeconverter(j.due_at)])
-        print(j)
-        print(timeconverter(j.due_at))
+        # print(j)
+        # print(timeconverter(j.due_at))
 
 
 # course = canvas.get_course(66891)
