@@ -14,11 +14,15 @@ def convertstring(listdict):
 
 def todolist():
     print("---------------------------------")
-
-    for i in range(len(course_list)):
-        dicttemp = {"index": str(i), "item": str(course_list[i]), "isChecked": False}
-        if todo_list[i] != dicttemp:
-            todo_list.append(dicttemp) # appends every time u look at todo list :( fixed?
+    if todo_list == []:
+        for i in range(len(course_list)):
+            todo_list.append({"index": str(i), "item": str(course_list[i]), "isChecked": False})
+    else: 
+        for i in range(len(course_list)):
+            dicttemp = {"index": str(i), "item": str(course_list[i]), "isChecked": False}
+            if todo_list[i] != dicttemp:
+                todo_list = todo_list[0:i] + dicttemp + todo_list[i:]
+                # todo_list.append(dicttemp) # appends every time u look at todo list :( fixed?
         
     # print(convertstring(todo_list))
     return convertstring(todo_list)
