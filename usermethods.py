@@ -1,6 +1,6 @@
 from canvasapi import Canvas
 API_URL = "https://csulb.instructure.com"
-API_TOKEN = '21139~ubrPGw0IftGsagPaMSinpKvz3AEjonQvU38lYF6UXPXjBsUERLcEZePJ71WMSmin'
+API_TOKEN = ''
 #creates canvas object
 
 
