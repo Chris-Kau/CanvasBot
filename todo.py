@@ -1,5 +1,5 @@
 # !todo gives todo list of upcoming for all classes. return it
-from blehh import course_list
+from classassignments import course_list
 
 todo_list = [] # list of dicts
 

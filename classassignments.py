@@ -1,5 +1,6 @@
 # pip install canvasapi
 from canvasapi import Canvas
+from timeconverter import timeconverter
 API_URL = "https://csulb.instructure.com/"
 API_KEY = "21139~ubrPGw0IftGsagPaMSinpKvz3AEjonQvU38lYF6UXPXjBsUERLcEZePJ71WMSmin" # api key / access token
 
@@ -24,6 +25,12 @@ print()
 print(course_list[0])
 for i in course_list[0].get_assignments(bucket="future"):
     print(i)
+    print(timeconverter(i.due_at))
+
+assignment_list = []
+for i in course_list:
+    for j in course_list[i].get_assignments(bucket="future"):
+        assignment_list.append([j, timeconverter(j.due_at)])
 
 # course = canvas.get_course(66891)
 # print(course)
