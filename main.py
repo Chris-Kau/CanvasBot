@@ -1,3 +1,5 @@
+# pip install python-dotenv
+# pip install discord
 import os
 from dotenv import load_dotenv
 from discord import Intents, Client, Message
