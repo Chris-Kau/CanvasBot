@@ -17,15 +17,14 @@ for i in courses:
     except Exception:
         continue
 
-for i in course_list:
-    print(i)
+# for i in course_list:
+#     print(i)
 
-print()
 
-print(course_list[0])
-for i in course_list[0].get_assignments(bucket="future"):
-    print(i)
-    print(timeconverter(i.due_at))
+# print(course_list[0])
+# for i in course_list[0].get_assignments(bucket="future"):
+#     print(i)
+#     print(timeconverter(i.due_at))
 
 assignment_list = []
 for i in range(len(course_list)):

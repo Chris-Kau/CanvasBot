@@ -1,5 +1,5 @@
 # !todo gives todo list of upcoming for all classes. return it
-from classassignments import course_list
+from classassignments import course_list, assignment_list
 
 #todo_list = [] # list of dicts
 
@@ -14,8 +14,8 @@ def convertstring(listdict):
 
 def todolist(todo_list):
     print("---------------------------------")
-    for i in range(len(course_list)):
-        dicttemp = {"index": str(i), "item": str(course_list[i]), "isChecked": "False"}
+    for i in range(len(assignment_list)):
+        dicttemp = {"index": str(i), "item": str(assignment_list[i]), "isChecked": "False"}
         if todo_list[i] != dicttemp:
             todo_list.insert(i, dicttemp)
             # todo_list.append(dicttemp) # appends every time u look at todo list :( fixed?

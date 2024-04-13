@@ -1,5 +1,5 @@
 from usermethods import userobject
-from classassignments import course_list
+from classassignments import course_list, assignment_list
 import main
 import todo
 
@@ -20,7 +20,7 @@ def get_response(user_input):
             if user.check_token() == False:
                 return "Invalid Access Token"
             main.todo_list = []
-            for i in range(len(course_list)):
-                main.todo_list.append({"index": str(i), "item": str(course_list[i]), "isChecked": "False"})
+            for i in range(len(assignment_list)):
+                main.todo_list.append({"index": str(i), "item": str(assignment_list[i]), "isChecked": "False"})
             main.checked = 1
             return "success!"
