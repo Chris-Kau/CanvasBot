@@ -32,7 +32,7 @@ for i in courses:
 assignment_list = []
 for i in range(len(course_list)):
     for j in course_list[i].get_assignments(bucket="future"):
-        assignment_list.append(f"{str(course_list[i]).rsplit(' ', 1)[1][1:-1]}||{j}||{timeconverter(j.due_at)}")
+        assignment_list.append(f"{str(course_list[i]).rsplit(' ', 1)[1][1:-1]}|{j}|{timeconverter(j.due_at)}")
         # print(j)
         # print(timeconverter(j.due_at))
 assignment_list.sort(key=sortdate)

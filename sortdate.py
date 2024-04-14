@@ -3,8 +3,8 @@ import math
 
 def sortdate(assignment):
     print(assignment)
-    print(assignment.split('||'))
-    split_data = assignment.split('||')[2].split(' ')
+    print(assignment.split('|'))
+    split_data = assignment.split('|')[2].split(' ')
     print(split_data)
     if split_data[1] == 'due':
         return math.inf, math.inf, math.inf, math.inf, math.inf, math.inf

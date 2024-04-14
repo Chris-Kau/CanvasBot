@@ -8,7 +8,7 @@ def print_todolist(list, page):
     else:
         temp_str = ''
         for i in list[(page-1)*10:(page*10)]:
-            temp_str += f"{i} {timeconverter(i.due_at)}\n"
+            temp_str += f"{i}\n"
         max_pages = math.ceil(len(list) / 10)
         footer = f"Page {page} of {max_pages}"
     return (temp_str, footer)
