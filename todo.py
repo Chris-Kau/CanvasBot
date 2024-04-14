@@ -6,8 +6,11 @@ from classassignments import course_list, assignment_list
 def convertstring(listdict):
     text = ""
     for i, dict in enumerate(listdict): # for dict in list of dicts
-        for key, value in dict.items(): # for pairs in dict. find a way to strikethorough? 
-            text = text + str(value) + " "
+        for key, value in dict.items(): # for pairs in dict. find a way to strikethorough?
+            if key == "index":
+                text = text + str(int(value) + 1) + " "
+            else:
+                text = text + str(value) + " "
         text += "\n"
     return text
 
