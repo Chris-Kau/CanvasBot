@@ -2,6 +2,7 @@
 # pip install discord
 import os
 from dotenv import load_dotenv
+import discord
 from discord import Intents, Client, Message
 import responses
 import time
@@ -23,6 +24,10 @@ async def on_ready() -> None:
 
 
 async def send_message(message, user_message):
+    embed=discord.Embed(title="Sample Embed", description="This is an embed that will show how to build an embed and the different components", color=discord.Color.blue())
+    embed.set_footer(text="This is the footer. It contains text at the bottom of the embed")    
+    await message.channel.send(embed=embed)
+    
     if not user_message:
         return
     if is_private := user_message[0] == '!':
@@ -33,6 +38,8 @@ async def send_message(message, user_message):
     except Exception as e:
         print(e)
 
+    
+        
 
 #handle incoming messages (so bot doesnt read its own message)
 @client.event
