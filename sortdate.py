@@ -2,9 +2,12 @@ import datetime
 import math
 
 def sortdate(assignment):
-    split_data = assignment.rsplit(' ', 2)
+    print(assignment)
+    print(assignment.split('||'))
+    split_data = assignment.split('||')[2].split(' ')
+    print(split_data)
     if split_data[1] == 'due':
         return math.inf, math.inf, math.inf, math.inf, math.inf, math.inf
-    year, month, day = split_data[1].split('-')
-    hour, minute, second = split_data[2].split(':')
+    year, month, day = split_data[0].split('-')
+    hour, minute, second = split_data[1].split(':')
     return int(year), int(month), int(day), int(hour), int(minute), int(second)
