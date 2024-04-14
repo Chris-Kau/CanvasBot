@@ -2,6 +2,7 @@ from usermethods import userobject
 from classassignments import course_list, assignment_list
 import main
 import todo
+import math
 
 def get_response(user_input):
     lowered: str = user_input.lower()
@@ -18,9 +19,23 @@ def get_response(user_input):
     if main.checked == 1:
         if "hello" in lowered:
             return "hello there!"
-        if "todo" in lowered:
-            print("YPI GPTPO INNN")
-            return todo.todolist(main.todo_list)
+        if "todo" in user_input.lower()[:5]:
+            #try/except checks to see if a user specified a page number, if not, it defaults to first page
+            try:
+                page = int(user_input[5:])
+            except:
+                page = 1
+            temp = (todo.todolist(main.todo_list)).split('\n')
+            #checks to see if the user tries to access a non-existing page
+            if (page-1)*10 > len(temp):
+                return(f"Such page does not exist within your to-do list")
+            temp_str = ''
+            for i in temp[(page-1)*10:(page*10)]:
+                temp_str += f"{i}\n"
+            temp_str += f"Page {page} of "
+            bleh = math.ceil(len(temp) / 10)
+            temp_str += str(bleh)
+            return temp_str
         if "check" in user_input.lower()[:6]:
             return todo.checktodo(user_input[6:])
     else:
