@@ -2,7 +2,6 @@ import datetime
 import math
 
 def sortdate(assignment):
-    print("sortdate....")
     split_data = assignment.split('|')[2].split(' ')
     if split_data[1] == 'Date':
         return math.inf, math.inf, math.inf, math.inf, math.inf, math.inf

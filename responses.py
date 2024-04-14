@@ -40,12 +40,13 @@ def get_response(user_input):
             except:
                 page = 1
             return todolist.print_todolist(assignments, page)
-        if "check" in user_input.lower()[:6]:
+        elif "check" in user_input.lower()[:6]:
             if int(user_input[6:]) > len(assignments):
                 return("Assignment doesnt exist")
             #this function is in charge of crossing out the assignment in bleh2.txt
             todo.checktodo(user_input[6:])
             return f"Successfully checked out assignment {user_input[6:]}"
-        
+        else:
+            return("Please use a valid command.")
     else:
         return ("Please set a valid canvas api token using !settoken (your token)")

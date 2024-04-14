@@ -9,6 +9,7 @@ import responses
 import datetime
 from timeconverter import time_to_word
 from classassignments import get_assignment_list
+import copy
 
 
 load_dotenv()
@@ -47,8 +48,6 @@ async def send_message(message, user_message):
             print(e)
     elif user_message == '?reminder' and open("token_state.txt").read() == "1":
         reminder.start(message)
-    else:
-        await message.channel.send(responses.get_response(user_message))
 
 
 #handle incoming messages (so bot doesnt read its own message)
@@ -66,12 +65,11 @@ async def reminder(message):
     next_three_day = datetime.date.today() + datetime.timedelta(days=3)
     output_string = ''
     #go to responses.py then go to todo.py and grab assignment list
-    assignments_list = get_assignment_list()
+    assignments_list = copy.copy(list(get_assignment_list()))
     for i in assignments_list:
         due_date = i.rsplit(' ', 2)
         if "Date" in due_date[2]: #When there is not due date
             continue
-
         year, month, day = due_date[1].split('|')[1].split('-')
         type_date = datetime.date(int(year), int(month), int(day))
         if type_date <= next_three_day:
