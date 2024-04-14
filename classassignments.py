@@ -19,8 +19,8 @@ for i in courses:
         continue
 
 
-for i in course_list:
-    print(i)
+# for i in course_list:
+#     print(i)
 
 
 # print(course_list[0])
@@ -31,10 +31,10 @@ for i in course_list:
 assignment_list = []
 for i in range(len(course_list)):
     for j in course_list[i].get_assignments(bucket="future"):
-        assignment_list.append([j, timeconverter(j.due_at)])
+        assignment_list.append(f"{j} {timeconverter(j.due_at)}")
         # print(j)
         # print(timeconverter(j.due_at))
-
+print(assignment_list)
 
 # course = canvas.get_course(66891)
 # print(course)

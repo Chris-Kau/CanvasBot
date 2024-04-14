@@ -20,7 +20,7 @@ def todolist(todo_list):
             todo_list.insert(i, dicttemp)
             # todo_list.append(dicttemp) # appends every time u look at todo list :( fixed?
         
-    #print(convertstring(todo_list))
+    # print(convertstring(todo_list))
     return convertstring(todo_list)
 
 # have isChecked be a thing
