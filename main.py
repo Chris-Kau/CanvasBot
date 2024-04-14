@@ -80,7 +80,7 @@ async def reminder(message):
         type_date = datetime.date(int(year), int(month), int(day))
         if type_date <= next_three_day:
             output_string += i + '\n'
-    await message.channel.send(output_string)
+    await message.author.send(output_string)
         
 
 def main():
