@@ -9,7 +9,7 @@ def get_response(user_input):
     lowered: str = user_input.lower()
     if "help" in lowered:
         #returns a list of commands
-        return(f"**!guide** -> shows you how to get your Canvas API Token\n**!settoken (token)** -> sets your Canvas API token so we can access your classes and assignments\n**!todo** -> returns a list of assignments; you can swap pages using !todo (page number)\n**!check (assignment num)** -> crosses off the chosen assignment to mark that you've completed it\n**!remind** -> DM's the user all the assignments that are due within 3 days every 6 hours\n**!cats** -> erm.. cats?!")
+        return(f"**!guide** -> shows you how to get your Canvas API Token\n**!settoken (token)** -> sets your Canvas API token so we can access your classes and assignments\n**!todo** -> returns a list of assignments; you can swap pages using !todo (page number)\n**!check (assignment num)** -> crosses off the chosen assignment to mark that you've completed it\n**!reminder** -> DM's the user all the assignments that are due within 3 days every 6 hours\n**!cats** -> erm.. cats?!")
     elif "guide" in lowered:
         return(f"Head over to https://csulb.instructure.com/profile/settings and scroll down until you see New Access Token")
     else:
