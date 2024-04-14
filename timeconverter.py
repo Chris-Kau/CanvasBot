@@ -3,7 +3,7 @@ from dateutil import tz
 
 def timeconverter(date_time):
     if date_time is None:
-        return "Must be type time in the format '{YYYY}-{mm}-{dd}T{HH}:{MM}:{SS}Z not None.'"
+        return "No due date.'"
     to_zone = tz.tzlocal()
     UTC = datetime.strptime(date_time, '%Y-%m-%dT%H:%M:%SZ')
     central = str(UTC.astimezone(to_zone))
