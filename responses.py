@@ -35,6 +35,8 @@ def get_response(user_input):
             #     assignment_objects.append(access_ass(classid, assid))
             return todolist.print_todolist(assignment_list, page)
         if "check" in user_input.lower()[:6]:
+            if int(user_input[6:]) > len(assignment_list):
+                return("Assignment doesnt exist")
             result = todo.checktodo(user_input[6:])
             #tdlist.set_list(result[1])
             return "yppipewidaw"

@@ -8,10 +8,10 @@
 7|66645|Quiz 11: Determinants (890472)|2024-04-28 23:59:00
 8|66645|Quiz 12: Eigenvalues & Eigenvectors (890465)|2024-05-05 23:59:00
 9|66645|Quiz 13: Singular Value Decomposition (890462)|2024-05-12 23:59:00
-10|66645|Midterm Exam (890478)|No due date.'
-11|66830|Quiz 3 (Spring 2024) (982498)|No due date.'
-12|66830|Midterm Test (Spring 2024) (989608)|No due date.'
-13|66859|Final percentage (out of 100%) (908894)|No due date.'
-14|68438|Attendance participation preparedness (888838)|No due date.'
-15|68438|Quiz #1 (888833)|No due date.'
-16|68438|Midterm Exam: Part 1 - Short Answer (in class) (888823)|No due date.'
+10|66645|Midterm Exam (890478)|No Date
+11|66830|Quiz 3 (Spring 2024) (982498)|No Date
+12|66830|Midterm Test (Spring 2024) (989608)|No Date
+13|66859|Final percentage (out of 100%) (908894)|No Date
+14|68438|Attendance participation preparedness (888838)|No Date
+15|68438|Quiz #1 (888833)|No Date
+16|68438|Midterm Exam: Part 1 - Short Answer (in class) (888823)|No Date

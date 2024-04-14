@@ -6,7 +6,7 @@ def sortdate(assignment):
     print(assignment.split('|'))
     split_data = assignment.split('|')[2].split(' ')
     print(split_data)
-    if split_data[1] == 'due':
+    if split_data[1] == 'Date':
         return math.inf, math.inf, math.inf, math.inf, math.inf, math.inf
     year, month, day = split_data[0].split('-')
     hour, minute, second = split_data[1].split(':')
