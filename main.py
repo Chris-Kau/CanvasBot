@@ -7,6 +7,7 @@ from discord import Intents, Client, Message
 from discord.ext import commands, tasks
 import responses
 import datetime
+from timeconverter import time_to_word
 
 
 load_dotenv()
@@ -73,14 +74,16 @@ async def reminder(message):
     output_string = ''
     #go to responses.py then go to todo.py and grab assignment list
     for i in responses.todo.assignment_list:
-        due_date = i.rsplit(' ', 2)[1]
-        if due_date == 'due': #When there is not due date
+        due_date = i.rsplit(' ', 2)
+        if "Date" in due_date[2]: #When there is not due date
             continue
-        year, month, day = due_date.split('-')
+
+        year, month, day = due_date[1].split('|')[1].split('-')
         type_date = datetime.date(int(year), int(month), int(day))
         if type_date <= next_three_day:
-            output_string += i + '\n'
-    await message.author.send(output_string)
+            output_string += f"*{time_to_word(str(due_date[1].split('|')[1] + ' ' + due_date[2]))}* - {due_date[0][6:]} \n"
+    embed = discord.Embed(title="DUE WITHIN 3 DAYS", description=output_string, color=discord.Color.purple())
+    await message.author.send(embed=embed)
         
 
 def main():
