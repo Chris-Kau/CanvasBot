@@ -4,8 +4,8 @@ import json
 import os
 from dotenv import load_dotenv
 import discord
-from discord import Intents, Client, Message
-from discord.ext import commands, tasks
+from discord import Intents, Client
+from discord.ext import tasks
 import responses
 import datetime
 from timeconverter import time_to_word
@@ -80,7 +80,7 @@ async def on_message(message):
     await send_message(message, user_message)
 
 
-@tasks.loop(seconds=5) #hours=24
+@tasks.loop(hours=6)
 async def reminder(message):
     next_three_day = datetime.date.today() + datetime.timedelta(days=3)
     output_string = ''

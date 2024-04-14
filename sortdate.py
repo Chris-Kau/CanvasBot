@@ -1,4 +1,3 @@
-import datetime
 import math
 
 def sortdate(assignment):

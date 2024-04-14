@@ -1,7 +1,6 @@
 from usermethods import userobject
 #from classassignments import assignment_list
 import classassignments
-import main
 import todo
 import todolist
 import copy
