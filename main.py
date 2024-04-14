@@ -8,6 +8,7 @@ from discord.ext import commands, tasks
 import responses
 import datetime
 from timeconverter import time_to_word
+from classassignments import get_assignment_list
 
 
 load_dotenv()
@@ -21,6 +22,13 @@ client = Client(intents=intents)
 @client.event
 async def on_ready() -> None:
     print(f"{client.user} is now running")
+    #create default files
+    file = open("token_state.txt", "w")
+    file.write('0')
+    file.close()
+    file = open("user_token.txt", "w")
+    file.write('NULL')
+    file.close()
 
 async def send_message(message, user_message):
     if not user_message:
@@ -43,14 +51,6 @@ async def send_message(message, user_message):
         await message.channel.send(responses.get_response(user_message))
 
 
-#startup message
-@client.event
-async def on_ready() -> None:
-    print(f"{client.user} is now running")
-    file = open("token_state.txt", "w")
-    file.write('0')
-    file.close()
-
 #handle incoming messages (so bot doesnt read its own message)
 
 @client.event
@@ -66,7 +66,8 @@ async def reminder(message):
     next_three_day = datetime.date.today() + datetime.timedelta(days=3)
     output_string = ''
     #go to responses.py then go to todo.py and grab assignment list
-    for i in responses.todo.assignment_list:
+    assignments_list = get_assignment_list()
+    for i in assignments_list:
         due_date = i.rsplit(' ', 2)
         if "Date" in due_date[2]: #When there is not due date
             continue
@@ -81,6 +82,7 @@ async def reminder(message):
 
 def main():
     client.run(token=TOKEN)
+    
 
 
 if __name__ == '__main__':
