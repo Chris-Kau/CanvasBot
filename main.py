@@ -14,11 +14,8 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 intents = Intents.default()
 intents.message_content = True
-# bot = commands.Bot(command_prefix='+', help_command=None, intents=intents)
 client = Client(intents=intents)
 #basic message response
-
-checked = 0
 
 #startup message
 @client.event
@@ -26,32 +23,33 @@ async def on_ready() -> None:
     print(f"{client.user} is now running")
 
 async def send_message(message, user_message):
-    # embed=discord.Embed(title="To-Do List", description="This is an embed that will show how to build an embed and the different components", color=discord.Color.blue())
-    # embed.set_footer(text="This is the footer. It contains text at the bottom of the embed")    
-    # await message.channel.send(embed=embed)
-    
     if not user_message:
         return
     if user_message[0] == '!':
         user_message = user_message[1:]
-    elif user_message == '?reminder':
+        try:
+            response = responses.get_response(user_message)
+            if "todo" in user_message.lower() and open("token_state.txt").read() == "1":
+                embed = discord.Embed(title="To-Do List", description=response[0], color=discord.Color.purple())
+                embed.set_footer(text=response[1])
+                await message.channel.send(embed=embed)
+            else:
+                await message.channel.send(response)
+        except Exception as e:
+            print(e)
+    elif user_message == '?reminder' and open("token_state.txt").read() == "1":
         reminder.start(message)
-    try:
-        response = responses.get_response(user_message)
-        if "todo" in user_message.lower():
-            embed = discord.Embed(title="To-Do List", description=response[0], color=discord.Color.purple())
-            embed.set_footer(text=response[1])
-            await message.channel.send(embed=embed)
-        else:
-            await message.channel.send(response)
-    except Exception as e:
-        print(e)
+    else:
+        await message.channel.send(responses.get_response(user_message))
 
 
 #startup message
 @client.event
 async def on_ready() -> None:
     print(f"{client.user} is now running")
+    file = open("token_state.txt", "w")
+    file.write('0')
+    file.close()
 
 #handle incoming messages (so bot doesnt read its own message)
 
@@ -59,12 +57,7 @@ async def on_ready() -> None:
 async def on_message(message):
     if message.author == client.user:
         return
-    # await bot.process_commands(message)
-
-    # username = str(message.author)
     user_message = str(message.content)
-    # channel = str(message.channel)
-    # print(f"{channel} {username} {user_message}")
     await send_message(message, user_message)
 
 
@@ -81,7 +74,7 @@ async def reminder(message):
         year, month, day = due_date[1].split('|')[1].split('-')
         type_date = datetime.date(int(year), int(month), int(day))
         if type_date <= next_three_day:
-            output_string += f"*{time_to_word(str(due_date[1].split('|')[1] + ' ' + due_date[2]))}* - {due_date[0][6:]} \n"
+            output_string += f"*{time_to_word(str(due_date[1].split('|')[1] + ' ' +  due_date[2]))}* - {due_date[0][6:]} \n"
     embed = discord.Embed(title="DUE WITHIN 3 DAYS", description=output_string, color=discord.Color.purple())
     await message.author.send(embed=embed)
         
