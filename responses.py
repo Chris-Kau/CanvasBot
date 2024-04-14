@@ -3,6 +3,7 @@ from classassignments import course_list, assignment_list
 import main
 import todo
 import math
+import discord
 
 def get_response(user_input):
     lowered: str = user_input.lower()
@@ -28,14 +29,14 @@ def get_response(user_input):
             temp = (todo.todolist(main.todo_list)).split('\n')
             #checks to see if the user tries to access a non-existing page
             if (page-1)*10 > len(temp):
-                return(f"Such page does not exist within your to-do list")
-            temp_str = ''
-            for i in temp[(page-1)*10:(page*10)]:
-                temp_str += f"{i}\n"
-            temp_str += f"Page {page} of "
-            bleh = math.ceil(len(temp) / 10)
-            temp_str += str(bleh)
-            return temp_str
+                return("Such page does not exist within your to-do list", 'sowwy :(')
+            else:
+                temp_str = ''
+                for i in temp[(page-1)*10:(page*10)]:
+                    temp_str += f"{i}\n"
+                max_pages = math.ceil(len(temp) / 10)
+                footer = f"Page {page} of {max_pages}"
+            return (temp_str, footer)
         if "check" in user_input.lower()[:6]:
             return todo.checktodo(user_input[6:])
     else:

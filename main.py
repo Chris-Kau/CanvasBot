@@ -25,9 +25,9 @@ async def on_ready() -> None:
 
 
 async def send_message(message, user_message):
-    embed=discord.Embed(title="Sample Embed", description="This is an embed that will show how to build an embed and the different components", color=discord.Color.blue())
-    embed.set_footer(text="This is the footer. It contains text at the bottom of the embed")    
-    await message.channel.send(embed=embed)
+    # embed=discord.Embed(title="To-Do List", description="This is an embed that will show how to build an embed and the different components", color=discord.Color.blue())
+    # embed.set_footer(text="This is the footer. It contains text at the bottom of the embed")    
+    # await message.channel.send(embed=embed)
     
     if not user_message:
         return
@@ -36,8 +36,13 @@ async def send_message(message, user_message):
     elif user_message == '?reminder':
         reminder.start(message)
     try:
-        response: str = responses.get_response(user_message)
-        await message.channel.send(response)
+        response = responses.get_response(user_message)
+        if "todo" in user_message.lower():
+            embed = discord.Embed(title="To-Do List", description=response[0], color=discord.Color.blue())
+            embed.set_footer(text=response[1])
+            await message.channel.send(embed=embed)
+        else:
+            await message.channel.send(response)
     except Exception as e:
         print(e)
 
