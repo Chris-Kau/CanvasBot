@@ -1,0 +1,17 @@
+0|66645|Quiz 9: Linear Transformations & Gaussian Elimination (994273)|2024-04-14 23:59:00
+1|66645|PA #5 (988900)|2024-04-14 23:59:59
+2|66926|Quiz Six Chapters 7 & 8 (909742)|2024-04-17 18:15:00
+3|68438|Quiz #9 (888832)|2024-04-19 23:59:00
+4|66645|Quiz 10: Inner Products and Orthogonality (890467)|2024-04-21 23:59:00
+5|66830|Prog 5 - Bucket List (vector) (873385)|2024-04-23 23:59:59
+6|68438|Activity #3: Hero Form (888837)|2024-04-24 14:00:00
+7|66645|Quiz 11: Determinants (890472)|2024-04-28 23:59:00
+8|66645|Quiz 12: Eigenvalues & Eigenvectors (890465)|2024-05-05 23:59:00
+9|66645|Quiz 13: Singular Value Decomposition (890462)|2024-05-12 23:59:00
+10|66645|Midterm Exam (890478)|No due date.'
+11|66830|Quiz 3 (Spring 2024) (982498)|No due date.'
+12|66830|Midterm Test (Spring 2024) (989608)|No due date.'
+13|66859|Final percentage (out of 100%) (908894)|No due date.'
+14|68438|Attendance participation preparedness (888838)|No due date.'
+15|68438|Quiz #1 (888833)|No due date.'
+16|68438|Midterm Exam: Part 1 - Short Answer (in class) (888823)|No due date.'

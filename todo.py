@@ -34,14 +34,14 @@ def todolist(todo_list):
 
 def checktodo(num): # isnt removing the item properly :/
     temp = []
-    file = open("bleh.txt", "r").read()
+    file = open("bleh2.txt", "r").read()
     for line in file.split("\n"):
         temp.append(line)
     for idx in range(len(temp)):
         if idx == int(num) - 1:
             temp[idx] = "~~" + temp[idx]
             break
-    file = open("bleh.txt", "w")
+    file = open("bleh2.txt", "w")
     for line in temp:
         file.write(f"{line}\n")
     file.close()

@@ -1,5 +1,5 @@
 from usermethods import userobject
-from classassignments import assignment_list, access_ass
+from classassignments import assignment_list
 import main
 import todo
 import todolist
@@ -11,9 +11,12 @@ def get_response(user_input):
         if user.check_token() == False:
             return "Invalid Access Token"
         f = open("bleh.txt", "w")
+        f2 = open("bleh2.txt", "w")
         for i in range(len(assignment_list)):
             f.write(f"{str(i)}|{str(assignment_list[i])}\n")
+            f2.write(f"{str(i)}|{str(assignment_list[i])}\n")
         f.close()
+        f2.close()
         main.checked = 1
         return "success!"
     if main.checked == 1:

@@ -43,6 +43,5 @@ print(assignment_list)
 
 # GET /api/v1/courses/:course_id/assignments
 
-def access_ass(classid, assid):
-    course = canvas.get_course(classid)
-    return course.get_assignment(assid)
+def get_course_name(id):
+    return canvas.get_course(id).name
