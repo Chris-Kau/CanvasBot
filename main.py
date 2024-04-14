@@ -6,6 +6,7 @@ import discord
 from discord import Intents, Client, Message
 from discord.ext import commands, tasks
 import responses
+import datetime
 
 
 load_dotenv()
@@ -46,8 +47,11 @@ async def send_message(message, user_message):
     except Exception as e:
         print(e)
 
-    
-        
+
+#startup message
+@client.event
+async def on_ready() -> None:
+    print(f"{client.user} is now running")
 
 #handle incoming messages (so bot doesnt read its own message)
 
@@ -64,10 +68,25 @@ async def on_message(message):
     await send_message(message, user_message)
 
 
-@tasks.loop(seconds=2)
+@tasks.loop(seconds=5) #hours=24
 async def reminder(message):
-    await message.author.send('You will now receive reminders every 24 hours')
-
+    next_three_day = datetime.date.today() + datetime.timedelta(days=3)
+    print(type(next_three_day))
+    #go to responses.py then go to todo.py and grab assignment list
+    # print(responses.todo.assignment_list)
+    output_string = ''
+    for i in responses.todo.assignment_list:
+        due_date = i.rsplit(' ', 2)[1]
+        print(due_date)
+        if due_date == 'due': #When there is not due date
+            continue
+        year, month, day = due_date.split('-')
+        print(year, month, day)
+        type_date = datetime.date(int(year), int(month), int(day))
+        if type_date <= next_three_day:
+            output_string += i + '\n'
+    await message.channel.send(output_string)
+        
 
 def main():
     client.run(token=TOKEN)
