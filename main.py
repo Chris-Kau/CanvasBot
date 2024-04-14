@@ -18,12 +18,11 @@ client = Client(intents=intents)
 #basic message response
 
 checked = 0
-todo_list = []
+
 #startup message
 @client.event
 async def on_ready() -> None:
     print(f"{client.user} is now running")
-
 
 async def send_message(message, user_message):
     # embed=discord.Embed(title="To-Do List", description="This is an embed that will show how to build an embed and the different components", color=discord.Color.blue())
@@ -39,7 +38,7 @@ async def send_message(message, user_message):
     try:
         response = responses.get_response(user_message)
         if "todo" in user_message.lower():
-            embed = discord.Embed(title="To-Do List", description=response[0], color=discord.Color.blue())
+            embed = discord.Embed(title="To-Do List", description=response[0], color=discord.Color.purple())
             embed.set_footer(text=response[1])
             await message.channel.send(embed=embed)
         else:

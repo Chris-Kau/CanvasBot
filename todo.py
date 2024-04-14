@@ -1,5 +1,7 @@
 # !todo gives todo list of upcoming for all classes. return it
 from classassignments import course_list, assignment_list
+import responses
+import copy
 
 #todo_list = [] # list of dicts
 
@@ -16,7 +18,7 @@ def convertstring(listdict):
 
 
 def todolist(todo_list):
-    print("---------------------------------")
+    #print("---------------------------------")
     for i in range(len(assignment_list)):
         dicttemp = {"index": str(i), "item": str(assignment_list[i]), "isChecked": "False"}
         if todo_list[i] != dicttemp:
@@ -31,10 +33,23 @@ def todolist(todo_list):
 # print todolist with isChecked being strikethroughed
 
 def checktodo(num): # isnt removing the item properly :/
-    for i in range(len(todo_list)):
-        if todo_list[i]["index"] == num:
-            todo_list[i].isChecked = True
+    temp = []
+    file = open("bleh.txt", "r").read()
+    for line in file.split("\n"):
+        temp.append(line)
+    for idx in range(len(temp)):
+        if idx == int(num) - 1:
+            temp[idx] = "~~" + temp[idx]
             break
+    file = open("bleh.txt", "w")
+    for line in temp:
+        file.write(f"{line}\n")
+    file.close()
+    # for i in range(len(temp)):
+    #     if int(temp[i]["index"]) == int(num) - 1:
+    #         temp[i]["item"] = "~~"+temp[i]["item"]+"~~"
+    #         break
+    return (f"Assignment {num} has been marked completed :D")
 
     # for i, d in enumerate(todo_list):
     #     if d['index'] == num:
